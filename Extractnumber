@@ -1,0 +1,21 @@
+public class StringUtils {
+
+    /**
+     * Extracts number from a string after a specific substring.
+     * @param input The input string.
+     * @param prefix The prefix substring to search for.
+     * @return Extracted number as string, or null if not found.
+     */
+    public static String extractNumberAfterSubstring(String input, String prefix) {
+        if (input == null || prefix == null || !input.startsWith(prefix)) {
+            return null;
+        }
+        
+        // Extract the substring after the prefix
+        String remaining = input.substring(prefix.length());
+
+        // Match numbers using regex
+        String number = remaining.replaceAll("[^0-9]", "");
+        return number.isEmpty() ? null : number;
+    }
+}
